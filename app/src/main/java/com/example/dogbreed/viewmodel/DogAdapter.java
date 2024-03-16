@@ -23,8 +23,12 @@ import java.util.List;
 import com.squareup.picasso.Picasso;
 
 public class DogAdapter extends RecyclerView.Adapter<DogAdapter.ViewHolder> implements Filterable {
-    private ArrayList<DogBreed> dogBreedList;
-    public DogAdapter(ArrayList<DogBreed> dogBreeds){this.dogBreedList=dogBreeds;}
+    private ArrayList<DogBreed> dogBreedList, dogBreedCopy;
+    public DogAdapter(ArrayList<DogBreed> dogBreeds)
+    {
+        this.dogBreedList=dogBreeds;
+        dogBreedCopy=dogBreeds;
+    }
 
     @NonNull
     @Override
@@ -65,28 +69,29 @@ public class DogAdapter extends RecyclerView.Adapter<DogAdapter.ViewHolder> impl
             protected FilterResults performFiltering(CharSequence constraint) {
                 String input=constraint.toString().toLowerCase();
                 List<DogBreed> filteredDog= new ArrayList<>();
+
                 if(!input.isEmpty())
                 {
-                    for(DogBreed dog:dogBreedList)
+                    for(DogBreed dog:dogBreedCopy)
                     {
                         if(dog.getName().toString().toLowerCase().contains(input)){
                             filteredDog.add(dog);
                         }
                     }
                 }
-                else
-                {
-                    filteredDog.addAll(dogBreedList);
-                    FilterResults filterResults=new FilterResults();
-                    filterResults.values=filteredDog;
-                    return filterResults;
+                else {
+                    filteredDog.addAll(dogBreedCopy);
                 }
-                return null;
+                FilterResults filterResults = new FilterResults();
+                filterResults.values=filteredDog;
+                return filterResults;
             }
 
             @Override
             protected void publishResults(CharSequence constraint, FilterResults results) {
-
+                dogBreedList=new ArrayList<>();
+                dogBreedList.addAll((List)results.values);
+                notifyDataSetChanged();
             }
         };
     }
