@@ -33,7 +33,6 @@ public class ListDogFragment extends Fragment {
     private DogAdapter dogAdapter;
     private FragmentListDogBinding binding;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -47,11 +46,13 @@ public class ListDogFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
+        //tạo menu
         binding=FragmentListDogBinding.inflate(inflater,container,false);
         View root = binding.getRoot();
 
         dogBreeds=new ArrayList<DogBreed>();
+
+
         dogAdapter=new DogAdapter(dogBreeds);
         binding.rvDogs.setAdapter(dogAdapter);
         binding.rvDogs.setLayoutManager(new GridLayoutManager(root.getContext(),2));
@@ -64,9 +65,8 @@ public class ListDogFragment extends Fragment {
                         for(DogBreed dog: dogBreeds1)
                         {
                             dogBreeds.add(dog);
-
+                            dogAdapter.notifyDataSetChanged();
                         }
-                        dogAdapter.notifyDataSetChanged();
                     }
                     @Override
                     public void onError(@io.reactivex.rxjava3.annotations.NonNull Throwable e) {

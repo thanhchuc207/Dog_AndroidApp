@@ -23,23 +23,22 @@ public class DetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            dogBreed=(DogBreed) getArguments().getSerializable("dogBreed");
+            dogBreed = (DogBreed) getArguments().getSerializable("dogBreed");
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding= DataBindingUtil.inflate(getLayoutInflater(),
-                R.layout.fragment_detail,null,false);
-        View viewRoot=binding.getRoot();
+        binding = DataBindingUtil.inflate(getLayoutInflater(),
+                R.layout.fragment_detail, null, false);
+        View viewRoot = binding.getRoot();
         binding.setDog(dogBreed);
 
         Picasso.get().load(dogBreed.getUrl()).into(binding.ivAvatar);
 
         return viewRoot;
     }
-
-
 }

@@ -8,6 +8,7 @@
     android:layout_margin="8dp"
     >
     <LinearLayout
+        android:id="@+id/layout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -31,13 +32,36 @@
                 android:layout_marginLeft="2dp"
                 android:layout_centerVertical="true"
                 ></TextView>
-            <ImageButton
-                android:layout_marginRight="5dp"
+            <LinearLayout
+                android:id="@+id/layout_unlike"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_noheart"
                 android:layout_alignParentRight="true"
-                ></ImageButton>
+                >
+                <ImageButton
+                    android:id="@+id/btn_unlike"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_notlike"
+                    ></ImageButton>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layout_like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:visibility="gone"
+                >
+                <ImageButton
+                    android:id="@+id/btn_like"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_like"
+                    ></ImageButton>
+            </LinearLayout>
+
         </RelativeLayout>
 
         <TextView
@@ -47,6 +71,70 @@
             android:textSize="15dp"
             android:text="..."
             ></TextView>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="180dp"
+        android:layout_height="260dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name: "
+                ></TextView>
+            <TextView
+                android:id="@+id/layout2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toy"
+                ></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Life span: "
+                ></TextView>
+            <TextView
+                android:id="@+id/layout2_life_span"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 - 12 years"
+                ></TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Origin: "
+                ></TextView>
+            <TextView
+                android:id="@+id/layout2_origin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Germany, France"
+                ></TextView>
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
